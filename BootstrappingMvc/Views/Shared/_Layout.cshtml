@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+
+        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/Bootstrap")
+
+        <style>
+            body { padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */ }
+            .aligntobottom { bottom:0; position:absolute; }
+        </style>
+
+    </head>
+    <body>
+        @*@Html.Partial("_LoginPartial")*@
+        <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="@Url.Action("Index", "Home")">Your Logo Here</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+        @if(IsSectionDefined("featured")){
+        <div class="hero-unit">
+            @RenderSection("featured", required: false)
+        </div>
+        }
+
+        @RenderBody()
+
+
+    </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/Scripts/Bootstrap")
+
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
