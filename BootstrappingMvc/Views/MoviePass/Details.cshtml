@@ -1,0 +1,36 @@
+﻿@model BootstrappingMvc.Models.MoviePass
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>MoviePass</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MovieTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MovieTitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CanUseForNewReleases)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CanUseForNewReleases)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CanSkipLine)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CanSkipLine)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MoviePassId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

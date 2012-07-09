@@ -1,0 +1,11 @@
+﻿@model bool?
+
+@if (Model.HasValue)
+{
+    if (Model.Value)
+        { <span class="label label-success">Yes</span> }
+    else
+        { <span class="label label-important">No</span> }
+}
+else
+    { <span class="label label-inverse">Not Set</span> }

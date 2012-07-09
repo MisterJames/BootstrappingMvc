@@ -1,0 +1,51 @@
+﻿@model BootstrappingMvc.Models.MoviePass
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>MoviePass</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MovieTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MovieTitle)
+            @Html.ValidationMessageFor(model => model.MovieTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CanUseForNewReleases)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CanUseForNewReleases)
+            @Html.ValidationMessageFor(model => model.CanUseForNewReleases)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CanSkipLine)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CanSkipLine)
+            @Html.ValidationMessageFor(model => model.CanSkipLine)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
