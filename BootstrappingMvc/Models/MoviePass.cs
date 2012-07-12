@@ -13,6 +13,7 @@ namespace BootstrappingMvc.Models
         public bool? CanUseForNewReleases { get; set; }
 
         [Display(Name = "VIP - Skip the Line")]
+        [UIHint("SwitchedBoolean")]
         public bool CanSkipLine { get; set; }
 
     }

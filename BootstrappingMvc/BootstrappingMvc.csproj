@@ -208,10 +208,10 @@
     <Content Include="Scripts\knockout-2.0.0.debug.js" />
     <Content Include="Scripts\knockout-2.0.0.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
-    <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml">
+    <Content Include="Views\Shared\DisplayTemplates\SwitchedBoolean.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml">
+    <Content Include="Views\Shared\EditorTemplates\SwitchedBoolean.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Web.config" />

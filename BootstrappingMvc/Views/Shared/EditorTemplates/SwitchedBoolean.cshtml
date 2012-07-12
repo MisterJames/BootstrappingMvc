@@ -1,0 +1,24 @@
+﻿    @model bool?
+
+    @{
+        // make use of MVC4 nullable class attribute values
+        var yesSelected = Model.HasValue && Model.Value ? "active" : null ;
+        var noSelected = Model.HasValue && !Model.Value ? "active" : null;
+        var noSelection = !Model.HasValue ? "active" : null;   
+    
+        // get the name of the ID - this is to support multiple fields     
+        var htmlField = ViewData.TemplateInfo.HtmlFieldPrefix;
+    }
+
+    @Html.HiddenFor(model => model)
+
+    <div class="btn-group" data-toggle="buttons-radio">
+        <button type="button" class="btn btn-info @yesSelected bool-@htmlField" onclick="javascript:$('#@htmlField').val(true);" >Yes</button>
+        <button type="button" class="btn btn-info @noSelected bool-@htmlField" onclick="javascript:$('#@htmlField').val(false);" >No</button>
+    
+        @if (ViewData.ModelMetadata.IsNullableValueType)
+            { <button type="button" class="btn btn-info @noSelection bool-@htmlField" onclick="javascript:$('#@htmlField').val('');" >Do Not Set</button> }
+
+    </div>
+
+

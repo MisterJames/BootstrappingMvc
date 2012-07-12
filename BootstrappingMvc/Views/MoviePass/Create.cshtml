@@ -4,47 +4,45 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "MoviePass", FormMethod.Post, new { @class = "form-horizontal" }))
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>MoviePass</legend>
+        <legend>Create a new Movie Pass</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.MovieTitle)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.MovieTitle)
-            @Html.ValidationMessageFor(model => model.MovieTitle)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CanUseForNewReleases)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CanUseForNewReleases)
-            @Html.ValidationMessageFor(model => model.CanUseForNewReleases)
+        <div class="control-group">
+            @Html.LabelFor(model => model.MovieTitle, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.MovieTitle)
+                @Html.ValidationMessageFor(model => model.MovieTitle)
+            </div>        
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CanSkipLine)
+        <div class="control-group">
+            @Html.LabelFor(model => model.CanUseForNewReleases, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.CanUseForNewReleases)
+                @Html.ValidationMessageFor(model => model.CanUseForNewReleases)
+            </div>        
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CanSkipLine)
-            @Html.ValidationMessageFor(model => model.CanSkipLine)
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.CanSkipLine, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.CanSkipLine)
+                @Html.ValidationMessageFor(model => model.CanSkipLine)
+            </div>        
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" class="btn btn-success" value="Create" />
         </p>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
