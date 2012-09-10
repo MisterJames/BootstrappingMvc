@@ -1,4 +1,5 @@
-﻿@model BootstrappingMvc.Models.MoviePass
+﻿
+@model BootstrappingMvc.Models.MoviePassViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -13,26 +14,26 @@
         <legend>Create a new Movie Pass</legend>
 
         <div class="control-group">
-            @Html.LabelFor(model => model.MovieTitle, new { @class = "control-label" })
+            @Html.LabelFor(model => model.MoviePass.MovieTitle, new { @class = "control-label" })
             <div class="controls">
-                @Html.EditorFor(model => model.MovieTitle)
-                @Html.ValidationMessageFor(model => model.MovieTitle)
+                @Html.EditorFor(model => model.MoviePass.MovieTitle)
+                @Html.ValidationMessageFor(model => model.MoviePass.MovieTitle)
             </div>        
         </div>
 
         <div class="control-group">
-            @Html.LabelFor(model => model.CanUseForNewReleases, new { @class = "control-label" })
+            @Html.LabelFor(model => model.MoviePass.CanUseForNewReleases, new { @class = "control-label" })
             <div class="controls">
-                @Html.EditorFor(model => model.CanUseForNewReleases)
-                @Html.ValidationMessageFor(model => model.CanUseForNewReleases)
+                @Html.EditorFor(model => model.MoviePass.CanUseForNewReleases)
+                @Html.ValidationMessageFor(model => model.MoviePass.CanUseForNewReleases)
             </div>        
         </div>
 
         <div class="control-group">
-            @Html.LabelFor(model => model.CanSkipLine, new { @class = "control-label" })
+            @Html.LabelFor(model => model.MoviePass.CanSkipLine, new { @class = "control-label" })
             <div class="controls">
-                @Html.EditorFor(model => model.CanSkipLine)
-                @Html.ValidationMessageFor(model => model.CanSkipLine)
+                @Html.EditorFor(model => model.MoviePass.CanSkipLine)
+                @Html.ValidationMessageFor(model => model.MoviePass.CanSkipLine)
             </div>        
         </div>
 
@@ -42,8 +43,29 @@
     </fieldset>
 }
 
-
-
 @section Scripts {
+
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        
+        // get the asp.net generated ID for the field
+        var movieTitleField = '#@Html.ClientIdFor(model => model.MoviePass.MovieTitle)';
+
+        $(function () {
+
+            $(movieTitleField).focus();
+
+            // get our list of movies from the view model
+            var possibleMovies = @Html.Raw(Model.PossibleMoviesJson);
+
+            // build our typeahead
+            $(movieTitleField).typeahead({
+                source: possibleMovies
+            });
+
+        });
+
+    </script>
+
 }

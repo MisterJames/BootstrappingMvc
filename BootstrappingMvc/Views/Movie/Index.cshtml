@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BootstrappingMvc.Models.Movie>
+
+@{
+    ViewBag.Title = "List of Movies";
+}
+
+<h2>Voila! Our Movies!</h2>
+
+<ul>
+
+@foreach (var item in Model) {
+    <li>
+        @Html.DisplayFor(modelItem => item.Title)
+    </li>
+}
+
+</ul>

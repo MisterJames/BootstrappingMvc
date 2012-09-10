@@ -132,12 +132,18 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BootstrapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\MoviePassController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\IMovieRepository.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MoviePass.cs" />
+    <Compile Include="Models\MoviePassViewModel.cs" />
+    <Compile Include="Models\FakeMovieRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +263,7 @@
     <Content Include="Views\Bootstrap\Index.cshtml" />
     <Content Include="Views\MoviePass\Details.cshtml" />
     <Content Include="Views\MoviePass\Create.cshtml" />
+    <Content Include="Views\Movie\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

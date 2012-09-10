@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using BootstrappingMvc.Models;
 
 namespace BootstrappingMvc.Controllers
 {
     public class MoviePassController : Controller
     {
+        IMovieRepository _repository;
+
+        public MoviePassController()
+        {
+            _repository = new FakeMovieRepository();
+        }
+
         //
         // GET: /MoviePass/
 
@@ -37,13 +45,19 @@ namespace BootstrappingMvc.Controllers
 
         public ActionResult Create()
         {
-            MoviePass pass = new MoviePass
+            MoviePass moviePass = new MoviePass
             {
                 CanUseForNewReleases = true,
                 CanSkipLine = false
             };
 
-            return View(pass);
+            var movieList = _repository.GetMovies().Select(m => m.Title).ToList();
+
+            MoviePassViewModel vm = new MoviePassViewModel();
+            vm.MoviePass = moviePass;
+            vm.PossibleMoviesJson = new JavaScriptSerializer().Serialize(movieList);
+
+            return View(vm);
         }
 
         //
@@ -52,11 +66,14 @@ namespace BootstrappingMvc.Controllers
         [HttpPost]
         public ActionResult Create(MoviePass moviePass)
         {
-            return View(moviePass);
+            MoviePassViewModel vm = new MoviePassViewModel();
+            vm.MoviePass = moviePass;
+
+            return View(vm);
         }
 
         //
-        // GET: /MoviePass/Edit/5
+        // GET: /MoviePass/Edit/5 
 
         public ActionResult Edit(int id)
         {
