@@ -1,11 +1,13 @@
-﻿@if (Request.IsAuthenticated) {
-    <p>
+﻿<div class="nav-collapse">
+@if (Request.IsAuthenticated) {
+    <p class="navbar-text pull-right">
         Hello, @Html.ActionLink(User.Identity.Name, "ChangePassword", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Change password" })!
         @Html.ActionLink("Log off", "LogOff", "Account")
     </p>
 } else {
-    <ul>
+    <ul class="nav pull-right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+</div>
