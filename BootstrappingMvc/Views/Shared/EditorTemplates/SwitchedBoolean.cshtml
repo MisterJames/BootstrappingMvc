@@ -6,18 +6,20 @@
         var noSelected = Model.HasValue && !Model.Value ? "active" : null;
         var noSelection = !Model.HasValue ? "active" : null;   
     
-        // get the name of the ID - this is to support multiple fields     
-        var htmlField = ViewData.TemplateInfo.HtmlFieldPrefix;
+        // get the name of the ID - this is to support multiple fields
+        // If the editor is for a child element, the field prefix does not match the element Id (but it still matches the name).
+        // In this case Razor uses dot notation in the name while keeping underscore notation in the Id.  HtmlFieldPrefix returns dot notation.
+        var htmlField = @"[name=""" + ViewData.TemplateInfo.HtmlFieldPrefix + @"""]";
     }
 
     @Html.HiddenFor(model => model)
 
     <div class="btn-group" data-toggle="buttons-radio">
-        <button type="button" class="btn btn-info @yesSelected bool-@htmlField" onclick="javascript:$('#@htmlField').val(true);" >Yes</button>
-        <button type="button" class="btn btn-info @noSelected bool-@htmlField" onclick="javascript:$('#@htmlField').val(false);" >No</button>
+        <button type="button" class="btn btn-info @yesSelected bool-@htmlField" onclick="javascript:$('@htmlField').val(true);" >Yes</button>
+        <button type="button" class="btn btn-info @noSelected bool-@htmlField" onclick="javascript:$('@htmlField').val(false);" >No</button>
     
         @if (ViewData.ModelMetadata.IsNullableValueType)
-            { <button type="button" class="btn btn-info @noSelection bool-@htmlField" onclick="javascript:$('#@htmlField').val('');" >Do Not Set</button> }
+            { <button type="button" class="btn btn-info @noSelection bool-@htmlField" onclick="javascript:$('@htmlField').val('');" >Do Not Set</button> }
 
     </div>
 
