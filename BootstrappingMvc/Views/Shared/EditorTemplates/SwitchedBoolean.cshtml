@@ -13,14 +13,10 @@
     }
 
     @Html.HiddenFor(model => model)
+    <div class="btn-group grp-bool" data-toggle="buttons">
+        <label class="btn btn-primary @yesSelected"><input type="radio" name="bool-@htmlField" onchange="javascript:$('@htmlField').val(true);" />Yes</label>
+        <label class="btn btn-primary @noSelected"><input type="radio" name="bool-@htmlField" onchange="javascript:$('@htmlField').val(false);" />No</label>
 
-    <div class="btn-group" data-toggle="buttons-radio">
-        <button type="button" class="btn btn-info @yesSelected bool-@htmlField" onclick="javascript:$('@htmlField').val(true);" >Yes</button>
-        <button type="button" class="btn btn-info @noSelected bool-@htmlField" onclick="javascript:$('@htmlField').val(false);" >No</button>
-    
         @if (ViewData.ModelMetadata.IsNullableValueType)
-            { <button type="button" class="btn btn-info @noSelection bool-@htmlField" onclick="javascript:$('@htmlField').val('');" >Do Not Set</button> }
-
+        { <label class="btn btn-primary @noSelection"><input type="radio" name="bool-@htmlField" onchange="javascript:$('@htmlField').val('');" />N/A</label> }
     </div>
-
-
